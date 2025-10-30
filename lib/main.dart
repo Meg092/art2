@@ -1,4 +1,5 @@
 import 'package:art_painting/pages/art_painting_category_list/art_painting_category_list_binding.dart';
+import 'package:art_painting/pages/art_painting_category_list/art_painting_category_list_filter.dart';
 import 'package:art_painting/pages/art_painting_category_list/art_painting_category_list_view.dart';
 import 'package:art_painting/pages/art_painting_daily/art_painting_daily_binding.dart';
 import 'package:art_painting/pages/art_painting_daily/art_painting_daily_view.dart';
@@ -8,6 +9,8 @@ import 'package:art_painting/pages/art_painting_favorites_detail/art_painting_fa
 import 'package:art_painting/pages/art_painting_favorites_detail/art_painting_favorites_detail_view.dart';
 import 'package:art_painting/pages/art_painting_favorites_list/art_painting_favorites_list_binding.dart';
 import 'package:art_painting/pages/art_painting_favorites_list/art_painting_favorites_list_view.dart';
+import 'package:art_painting/pages/art_painting_get/art_painting_get_binding.dart';
+import 'package:art_painting/pages/art_painting_get/art_painting_get_view.dart';
 import 'package:art_painting/pages/art_painting_home/art_painting_home_binding.dart';
 import 'package:art_painting/pages/art_painting_home/art_painting_home_view.dart';
 import 'package:art_painting/pages/art_painting_settings/art_painting_settings_binding.dart';
@@ -54,7 +57,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           getPages: Gallery,
-          initialRoute: '/art_painting_tab',
+          initialRoute: '/',
           theme: ThemeData(
             useMaterial3: true,
             primaryColor: primaryColor,
@@ -109,6 +112,14 @@ class MyApp extends StatelessWidget {
 }
 List<GetPage<dynamic>> Gallery = [
   GetPage(
+    name: '/',
+    page: () => const ArtPaintingGetView(),
+    binding: ArtPaintingGetBinding(),
+    transition: Transition.cupertino,
+    popGesture: true,
+    preventDuplicates: false,
+  ),
+  GetPage(
     name: '/art_painting_tab',
     page: () => const ArtPaintingTabView(),
     binding: ArtPaintingTabBinding(),
@@ -144,6 +155,13 @@ List<GetPage<dynamic>> Gallery = [
     name: '/art_painting_detail',
     page: () => const ArtPaintingDetailView(),
     binding: ArtPaintingDetailBinding(),
+    transition: Transition.cupertino,
+    popGesture: true,
+    preventDuplicates: false,
+  ),
+  GetPage(
+    name: '/art_painting_category_filter',
+    page: () => ArtPaintingCategoryListFilter(),
     transition: Transition.cupertino,
     popGesture: true,
     preventDuplicates: false,
